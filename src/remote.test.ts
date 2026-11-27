@@ -19,6 +19,15 @@ describe("earthEntryUrl", () => {
     expect(earthEntryUrl("  ", page)).toBe("http://localhost:5181/remoteEntry.js");
   });
 
+  it("puts a configured port and path on the page's host", () => {
+    expect(earthEntryUrl(":6181/remoteEntry.js", { protocol: "https:", hostname: "devbox.example.test" })).toBe(
+      "https://devbox.example.test:6181/remoteEntry.js",
+    );
+    expect(earthEntryUrl(" :6181/remoteEntry.js ", { protocol: "http:", hostname: "::1" })).toBe(
+      "http://[::1]:6181/remoteEntry.js",
+    );
+  });
+
   it("keeps the page protocol", () => {
     expect(earthEntryUrl(undefined, { protocol: "https:", hostname: "localhost" })).toBe(
       "https://localhost:5181/remoteEntry.js",

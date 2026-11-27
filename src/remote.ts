@@ -13,12 +13,15 @@ export interface PageLocation {
 
 /**
  * Entry URL of the remote (design section 2 item 2): the configured URL when
- * set, otherwise the page's protocol and hostname on port 5181.
+ * set, otherwise the page's protocol and hostname on port 5181. A configured
+ * value that starts with ":" is a port and path on the page's own protocol and
+ * hostname (":6181/remoteEntry.js").
  */
 export function earthEntryUrl(configured: string | undefined, page: PageLocation): string {
   const url = configured?.trim();
-  if (url) return url;
   const host = page.hostname.includes(":") && !page.hostname.startsWith("[") ? `[${page.hostname}]` : page.hostname;
+  if (url?.startsWith(":")) return `${page.protocol}//${host}${url}`;
+  if (url) return url;
   return `${page.protocol}//${host}:${EARTH_PORT}/remoteEntry.js`;
 }
 

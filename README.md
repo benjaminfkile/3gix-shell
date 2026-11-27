@@ -20,7 +20,7 @@ None are committed. Set them in your shell or in a local `.env` file (ignored by
 | `GX_TLS_CERT`, `GX_TLS_KEY` | Paths to a certificate and key. When both are set the dev and preview servers use HTTPS; otherwise HTTP. |
 | `GX_HOST` | Address to bind (default `localhost`). |
 | `GX_SHELL_PORT` | Port (default `5180`). |
-| `GX_EARTH_URL` | Optional entry URL of the remote, read at build or dev time. When unset, the shell uses the page's own protocol and hostname with port `5181` and path `/remoteEntry.js`, so a shell opened from another device on the network finds the MFE on the same machine. |
+| `GX_EARTH_URL` | Optional entry URL of the remote, read at build or dev time. When unset, the shell uses the page's own protocol and hostname with port `5181` and path `/remoteEntry.js`, so a shell opened from another device on the network finds the MFE on the same machine. A value that starts with `:` is a port and path on the page's own protocol and hostname, for example `:6181/remoteEntry.js`. |
 
 ## Running it next to 3gix-earth
 

@@ -13,7 +13,7 @@ Approved by Ben 2026-11-23. This is the contract for this repository.
 ## 2. Loading the MFE
 
 1. The remote `gx_earth` is registered at runtime (the Module Federation runtime's `registerRemotes` and `loadRemote`), not at build time, and its module `./EarthApp` is rendered full page.
-2. Its entry URL is `GX_EARTH_URL` when set at build or dev time; otherwise it is built from the page's own address: the same protocol and hostname, port `5181`, path `/remoteEntry.js`. So the shell opened from another device on the network finds the MFE on the same machine.
+2. Its entry URL is `GX_EARTH_URL` when set at build or dev time; otherwise it is built from the page's own address: the same protocol and hostname, port `5181`, path `/remoteEntry.js`. So the shell opened from another device on the network finds the MFE on the same machine. A configured value that starts with `:` is a port and path on the page's own protocol and hostname (`:6181/remoteEntry.js`), for an MFE on the same machine but another port.
 3. While loading: a centered MUI progress indicator. If loading fails: an MUI alert naming the URL it tried and the error, with a retry button. Never a blank page.
 4. The page has no chrome of its own: `CssBaseline`, a dark theme, and the MFE filling the viewport (`100dvh`).
 
